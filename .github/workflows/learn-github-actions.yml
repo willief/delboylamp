@@ -11,3 +11,11 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+
+
+ - name: Start a client to carry out chunk actions
+        run: cargo run --bin safe --release -- files upload -- "./resources"
+        id: client-chunk-actions
+        env:
+          RUST_LOG: "safenode,safe=trace"
+        timeout-minutes: 2
